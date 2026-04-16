@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es" id="html-tag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Interpolat - Calculadora de Interpolación Lineal</title>
+    <meta name="description" content="Calculadora gratuita de interpolación lineal online. Resuelve cualquier variable, visualiza gráficas interactivas y exporta tu historial a CSV. Ideal para ingeniería y matemáticas.">
+    <meta property="og:title" content="Interpolat - Calculadora Lineal">
+    <meta property="og:description" content="Ingresa tus datos, calcula variables faltantes y obtén la gráfica al instante.">
+    <meta property="og:type" content="website">
+    
+    <link rel="alternate" hreflang="es" href="https://tudominio.com/" />
+    <link rel="alternate" hreflang="en" href="https://tudominio.com/?lang=en" />
+    <link rel="alternate" hreflang="x-default" href="https://tudominio.com/" />
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="contenedor-global">
+        
+        <aside class="espacio-anuncio izquierdo">
+            <p>Espacio AdSense</p>
+        </aside>
+
+        <main class="contenido-principal">
+            <div class="cabecera-app">
+                <h1 data-i18n="mainTitle">Interpolador Lineal</h1>
+                <div class="selector-idioma">
+                    <span>🌐</span>
+                    <select id="lang-switch" onchange="cambiarIdioma(this.value)">
+                        <option value="es">Español</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layout-principal">
+                <div class="tarjeta">
+                    <h2 data-i18n="calcTitle">Calculadora</h2>
+                    <p class="subtitulo" data-i18n="calcSub">Llena 5 de las 6 casillas. Deja en blanco la que deseas calcular.</p>
+                    
+                    <div class="tabla-interpolacion">
+                        <div class="fila-cabecera">
+                            <div class="celda-cabecera"><span class="lbl-x">X</span> <span class="btn-editar" onclick="editarVariable('X')" title="Editar">✏️</span></div>
+                            <div class="celda-cabecera"><span class="lbl-y">Y</span> <span class="btn-editar" onclick="editarVariable('Y')" title="Editar">✏️</span></div>
+                        </div>
+                        
+                        <div class="fila-datos">
+                            <input type="number" id="x1">
+                            <input type="number" id="y1">
+                        </div>
+                        <div class="fila-datos">
+                            <input type="number" id="x2">
+                            <input type="number" id="y2">
+                        </div>
+                        <div class="fila-datos">
+                            <input type="number" id="x3">
+                            <input type="number" id="y3">
+                        </div>
+                    </div>
+
+                    <button class="btn-calcular" onclick="calcularInterpolacion(true)" data-i18n="btnCalc">Calcular</button>
+                </div>
+
+                <div class="tarjeta">
+                    <div class="grafica-wrapper">
+                        <canvas id="lienzoGrafica"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layout-principal">
+                <div class="tarjeta tarjeta-scroll">
+                    <h2>
+                        <span data-i18n="histTitle">Historial</span> 
+                        <span class="ayuda-clic" data-i18n="histHelp">(Clic en una fila para ver gráfica)</span>
+                    </h2>
+                    
+                    <div class="contenedor-tabla">
+                        <table id="tabla-historial">
+                            <thead>
+                                <tr>
+                                    <th style="width: 30px;"></th> 
+                                    <th>X₁</th><th>Y₁</th><th>X₂</th><th>Y₂</th><th>X₃</th><th>Y₃</th>
+                                    <th data-i18n="colVars">Variables</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cuerpo-historial"></tbody>
+                        </table>
+                    </div>
+                    <div id="mensaje-historial-vacio" class="mensaje-vacio" data-i18n="histEmpty">Aún no hay cálculos en el historial.</div>
+                    
+                    <button id="btn-exportar" class="btn-exportar" onclick="exportarCSV()" style="display: none;" data-i18n="btnExport">⬇️ Exportar a CSV</button>
+                </div>
+
+                <div class="tarjeta bg-secundario">
+                    <div class="grafica-wrapper">
+                        <canvas id="lienzoGraficaHistorial"></canvas>
+                        <div id="mensaje-vacio-grafica" class="mensaje-flotante" data-i18n="chartEmpty">Selecciona una fila del historial</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tarjeta" id="zona-educativa" style="margin-top: 20px;">
+                <h2 data-i18n="eduTitle">¿Qué estamos calculando?</h2>
+                <p data-i18n="eduP1">La <strong>interpolación lineal</strong> estima un valor desconocido asumiendo un cambio proporcional y constante (línea recta) entre los puntos conocidos.</p>
+                <p data-i18n="eduP2">Al tener dos puntos completos $A(x_A, y_A)$ y $B(x_B, y_B)$, podemos encontrar cualquier componente faltante de un tercer punto $C$ manteniendo la misma pendiente.</p>
+                
+                <p><strong data-i18n="eduEqTitle">Ecuación de la Recta:</strong></p>
+                <div class="caja-formula" id="formula-latex"></div>
+                <p class="texto-centrado"><span data-i18n="eduWhere">Donde <strong>$x$</strong> es</span> <span class="lbl-x text-bold">X</span> <span data-i18n="eduAnd">e <strong>$y$</strong> es</span> <span class="lbl-y text-bold">Y</span>.</p>
+            </div>
+
+            <footer class="pie-pagina">
+                <a href="#">Política de Privacidad</a> |
+                <a href="#">Términos y Condiciones</a> |
+                <a href="#">Contacto</a>
+                <p style="color: #999; margin-top: 10px;">&copy; 2026 Interpolat. Todos los derechos reservados.</p>
+            </footer>
+
+        </main>
+
+        <aside class="espacio-anuncio derecho">
+            <p>Espacio AdSense</p>
+        </aside>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
