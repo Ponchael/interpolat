@@ -36,6 +36,14 @@ const traducciones = {
         promptX: "Ingresa el nuevo nombre para la variable X (ej. Tiempo, Presión):",
         promptY: "Ingresa el nuevo nombre para la variable Y (ej. Distancia, Temperatura):",
 
+        eduExampleTitle: "Ejemplo de Aplicación Real:",
+        eduExampleText: "Si a una presión de $100 \\text{ kPa}$ la temperatura de saturación es $99.61 ^\\circ\\text{C}$ ($P_1, T_1$) y a $150 \\text{ kPa}$ es $111.35 ^\\circ\\text{C}$ ($P_2, T_2$), ¿cuál es la temperatura a $125 \\text{ kPa}$ ($P_C$)?",
+        eduExampleResult: "Resultado: $105.48 ^\\circ\\text{C}$",
+        eduUseCaseTitle: "Casos de uso comunes:",
+        eduList1: "Tablas de Termodinámica (Presión, Temperatura, Volumen específico).",
+        eduList2: "Resistencia de Materiales (Esfuerzo vs Deformación).",
+        eduList3: "Mecánica de Fluidos (Viscosidad según la temperatura).",
+
         footerPriv: "Política de Privacidad",
         footerTerm: "Términos y Condiciones",
         footerCont: "Contacto",
@@ -70,6 +78,14 @@ const traducciones = {
         alertDivZeroY: "Division by zero: Known Y values cannot be equal.",
         promptX: "Enter the new name for the X variable (e.g., Time, Pressure):",
         promptY: "Enter the new name for the Y variable (e.g., Distance, Temperature):",
+
+        eduExampleTitle: "Real Application Example:",
+        eduExampleText: "If at a pressure of $100 \\text{ kPa}$ the saturation temperature is $99.61 ^\\circ\\text{C}$ ($P_1, T_1$) and at $150 \\text{ kPa}$ it is $111.35 ^\\circ\\text{C}$ ($P_2, T_2$), what is the temperature at $125 \\text{ kPa}$ ($P_C$)?",
+        eduExampleResult: "Result: $105.48 ^\\circ\\text{C}$",
+        eduUseCaseTitle: "Common use cases:",
+        eduList1: "Thermodynamics Tables (Pressure, Temperature, Specific Volume).",
+        eduList2: "Strength of Materials (Stress vs Strain).",
+        eduList3: "Fluid Mechanics (Viscosity vs Temperature).",
 
         footerPriv: "Privacy Policy",
         footerTerm: "Terms and Conditions",

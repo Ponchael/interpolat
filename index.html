@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="es" id="html-tag">
 <head>
+        <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EH3F5YXLY6"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-EH3F5YXLY6');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -111,12 +121,35 @@
 
             <div class="tarjeta" id="zona-educativa" style="margin-top: 20px;">
                 <h2 data-i18n="eduTitle">¿Qué estamos calculando?</h2>
-                <p data-i18n="eduP1">La <strong>interpolación lineal</strong> estima un valor desconocido asumiendo un cambio proporcional y constante (línea recta) entre los puntos conocidos.</p>
-                <p data-i18n="eduP2">Al tener dos puntos completos $A(x_A, y_A)$ y $B(x_B, y_B)$, podemos encontrar cualquier componente faltante de un tercer punto $C$ manteniendo la misma pendiente.</p>
+                
+                <p data-i18n="eduP1">La <strong>interpolación lineal</strong> es la herramienta fundamental para obtener datos precisos de tablas técnicas cuando el valor exacto no aparece en la lista, como ocurre constantemente en las <strong>tablas de vapor saturado</strong> o propiedades de materiales.</p>
+                
+                <div class="layout-principal" style="grid-template-columns: 1fr; margin-top: 15px;">
+                    <div class="bg-secundario" style="padding: 15px; border-radius: 8px;">
+                        <p><strong data-i18n="eduExampleTitle">Ejemplo de Aplicación Real:</strong></p>
+                        <p style="font-size: 0.95em; color: #444;" data-i18n="eduExampleText">Si a una presión de $100 \text{ kPa}$ la temperatura de saturación es $99.61 ^\circ\text{C}$ ($P_1, T_1$) y a $150 \text{ kPa}$ es $111.35 ^\circ\text{C}$ ($P_2, T_2$), ¿cuál es la temperatura a $125 \text{ kPa}$ ($P_C$)?</p>
+                        <p style="font-size: 0.95em; color: #2c3e50; font-weight: bold;" data-i18n="eduExampleResult">Resultado: $105.48 ^\circ\text{C}$</p>
+                    </div>
+                </div>
+
+                <p data-i18n="eduP2" style="margin-top: 20px;">Matemáticamente, asumimos que entre dos puntos conocidos $A(x_A, y_A)$ y $B(x_B, y_B)$, existe una línea recta. Esto nos permite encontrar cualquier componente de un punto intermedio $C$ calculando la pendiente constante.</p>
                 
                 <p><strong data-i18n="eduEqTitle">Ecuación de la Recta:</strong></p>
                 <div class="caja-formula" id="formula-latex"></div>
-                <p class="texto-centrado"><span data-i18n="eduWhere">Donde <strong>$x$</strong> es</span> <span class="lbl-x text-bold">X</span> <span data-i18n="eduAnd">e <strong>$y$</strong> es</span> <span class="lbl-y text-bold">Y</span>.</p>
+                
+                <p class="texto-centrado">
+                    <span data-i18n="eduWhere">Donde <strong>$x$</strong> es</span> 
+                    <span class="lbl-x text-bold">X</span>
+                    <span data-i18n="eduAnd">e <strong>$y$</strong> es</span>
+                    <span class="lbl-y text-bold">Y</span>.
+                </p>
+
+                <h3 data-i18n="eduUseCaseTitle" style="font-size: 1.1em; color: #2c3e50;">Casos de uso comunes:</h3>
+                <ul class="lista-pasos" style="font-size: 0.95em;">
+                    <li data-i18n="eduList1">Tablas de Termodinámica (Presión, Temperatura, Volumen específico).</li>
+                    <li data-i18n="eduList2">Resistencia de Materiales (Esfuerzo vs Deformación).</li>
+                    <li data-i18n="eduList3">Mecánica de Fluidos (Viscosidad según la temperatura).</li>
+                </ul>
             </div>
 
             <footer class="pie-pagina">
