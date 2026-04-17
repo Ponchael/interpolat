@@ -34,7 +34,12 @@ const traducciones = {
         alertDivZeroX: "División por cero: Las X conocidas no pueden ser iguales.",
         alertDivZeroY: "División por cero: Las Y conocidas no pueden ser iguales.",
         promptX: "Ingresa el nuevo nombre para la variable X (ej. Tiempo, Presión):",
-        promptY: "Ingresa el nuevo nombre para la variable Y (ej. Distancia, Temperatura):"
+        promptY: "Ingresa el nuevo nombre para la variable Y (ej. Distancia, Temperatura):",
+
+        footerPriv: "Política de Privacidad",
+        footerTerm: "Términos y Condiciones",
+        footerCont: "Contacto",
+        footerRights: "© 2026 Interpolat. Todos los derechos reservados."
     },
     en: {
         mainTitle: "Linear Interpolator",
@@ -64,14 +69,26 @@ const traducciones = {
         alertDivZeroX: "Division by zero: Known X values cannot be equal.",
         alertDivZeroY: "Division by zero: Known Y values cannot be equal.",
         promptX: "Enter the new name for the X variable (e.g., Time, Pressure):",
-        promptY: "Enter the new name for the Y variable (e.g., Distance, Temperature):"
+        promptY: "Enter the new name for the Y variable (e.g., Distance, Temperature):",
+
+        footerPriv: "Privacy Policy",
+        footerTerm: "Terms and Conditions",
+        footerCont: "Contact",
+        footerRights: "© 2026 Interpolat. All rights reserved."
     }
 };
 
 function inicializarIdioma() {
-    const userLang = navigator.language || navigator.userLanguage;
-    idiomaActual = userLang.startsWith('es') ? 'es' : 'en';
-    
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLang = urlParams.get('lang');
+
+    if (urlLang && (urlLang === 'es' || urlLang === 'en')) {
+        idiomaActual = urlLang;
+    } else {
+        const userLang = navigator.language || navigator.userLanguage;
+        idiomaActual = userLang.startsWith('es') ? 'es' : 'en';
+    }
+
     document.getElementById('lang-switch').value = idiomaActual;
     document.getElementById('html-tag').setAttribute('lang', idiomaActual);
     aplicarTraducciones();
@@ -100,6 +117,10 @@ function aplicarTraducciones() {
         }
     });
     renderMathInElement(document.getElementById('zona-educativa'), { delimiters: [ {left: '$', right: '$', display: false} ] });
+
+    document.getElementById('link-priv').href = `privacidad.html?lang=${idiomaActual}`;
+    document.getElementById('link-term').href = `terminos.html?lang=${idiomaActual}`;
+    document.getElementById('link-cont').href = `contacto.html?lang=${idiomaActual}`;
 }
 
 function getT(key) { return traducciones[idiomaActual][key]; }

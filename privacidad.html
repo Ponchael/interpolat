@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es" id="html-tag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Política de Privacidad - Interpolat</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="contenedor-global">
+        <main class="contenido-principal" style="grid-column: 2; max-width: 800px; margin: 0 auto;">
+            <div class="cabecera-app">
+                <h1 id="main-heading">Política de Privacidad</h1>
+                <a id="back-link" href="index.html?lang=es" style="color: #3498db; text-decoration: none; font-weight: bold;">← Volver a la Calculadora</a>
+            </div>
+            <div class="tarjeta">
+                
+                <div id="content-es">
+                    <h2>Protección de tus Datos</h2>
+                    <p>En <strong>Interpolat</strong>, respetamos tu privacidad y estamos comprometidos a protegerla. Esta política explica cómo manejamos la información cuando visitas nuestro sitio web (interpolat.com).</p>
+                    
+                    <h3>1. Recopilación de Información</h3>
+                    <p><strong>No recopilamos datos personales.</strong> Nuestra calculadora de interpolación lineal funciona enteramente en tu navegador (lado del cliente). Los datos que ingresas en las casillas matemáticas no se envían a ningún servidor ni se guardan en nuestras bases de datos.</p>
+                    
+                    <h3>2. Cookies y Análisis de Tráfico</h3>
+                    <p>Utilizamos servicios de terceros, como Google Analytics y Cloudflare, para medir el tráfico de la web y proteger la página contra ataques maliciosos. Estos servicios pueden utilizar cookies para recopilar información anónima sobre tu ubicación general, el tipo de dispositivo que usas y qué páginas visitas. Esto nos ayuda a mejorar el rendimiento del sitio.</p>
+                    
+                    <h3>3. Anuncios (Google AdSense)</h3>
+                    <p>Utilizamos Google AdSense para mostrar anuncios. Google y sus socios pueden utilizar cookies para mostrarte anuncios relevantes basados en tus visitas anteriores a nuestro sitio u otros sitios en Internet.</p>
+                    
+                    <p style="margin-top: 30px; font-size: 0.9em; color: #666;">Última actualización: Abril de 2026</p>
+                </div>
+
+                <div id="content-en" style="display: none;">
+                    <h2>Protection of your Data</h2>
+                    <p>At <strong>Interpolat</strong>, we respect your privacy and are committed to protecting it. This policy explains how we handle information when you visit our website (interpolat.com).</p>
+                    
+                    <h3>1. Information Collection</h3>
+                    <p><strong>We do not collect personal data.</strong> Our linear interpolation calculator runs entirely in your browser (client-side). The data you enter into the mathematical fields is not sent to any server or saved in our databases.</p>
+                    
+                    <h3>2. Cookies and Traffic Analysis</h3>
+                    <p>We use third-party services, such as Google Analytics and Cloudflare, to measure web traffic and protect the page against malicious attacks. These services may use cookies to collect anonymous information about your general location, the type of device you use, and which pages you visit. This helps us improve site performance.</p>
+                    
+                    <h3>3. Advertisements (Google AdSense)</h3>
+                    <p>We use Google AdSense to display advertisements. Google and its partners may use cookies to show you relevant ads based on your previous visits to our site or other sites on the Internet.</p>
+                    
+                    <p style="margin-top: 30px; font-size: 0.9em; color: #666;">Last updated: April 2026</p>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const lang = urlParams.get('lang') || 'es';
+        
+        if (lang === 'en') {
+            document.getElementById('html-tag').setAttribute('lang', 'en');
+            document.getElementById('content-es').style.display = 'none';
+            document.getElementById('content-en').style.display = 'block';
+            document.getElementById('page-title').innerText = "Privacy Policy - Interpolat";
+            document.getElementById('main-heading').innerText = "Privacy Policy";
+            document.getElementById('back-link').innerText = "← Back to Calculator";
+            document.getElementById('back-link').href = "index.html?lang=en";
+        }
+    </script>
+</body>
+</html>

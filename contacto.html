@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es" id="html-tag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Contacto - Interpolat</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="contenedor-global">
+        <main class="contenido-principal" style="grid-column: 2; max-width: 800px; margin: 0 auto;">
+            <div class="cabecera-app">
+                <h1 id="main-heading">Contacto</h1>
+                <a id="back-link" href="index.html?lang=es" style="color: #3498db; text-decoration: none; font-weight: bold;">← Volver a la Calculadora</a>
+            </div>
+            <div class="tarjeta" style="text-align: center; padding: 50px 20px;">
+                
+                <div id="content-es">
+                    <h2>¿Tienes dudas, sugerencias o encontraste un error?</h2>
+                    <p style="font-size: 1.2em; color: #555; margin-bottom: 30px;">Nos encantaría escucharte para seguir mejorando la herramienta.</p>
+                    <p>Puedes comunicarte directamente con el Director del Proyecto enviando un correo electrónico a:</p>
+                    
+                    <div style="background-color: #e8f4f8; padding: 20px; border-radius: 10px; display: inline-block; margin-top: 20px; border: 2px dashed #3498db;">
+                        <strong style="font-size: 1.4em; color: #2c3e50;">contacto.interpolat@gmail.com</strong>
+                    </div>
+                    
+                    <p style="margin-top: 40px; color: #7f8c8d;">Intentamos responder a todos los mensajes en un plazo de 24 a 48 horas hábiles.</p>
+                </div>
+
+                <div id="content-en" style="display: none;">
+                    <h2>Do you have questions, suggestions, or found a bug?</h2>
+                    <p style="font-size: 1.2em; color: #555; margin-bottom: 30px;">We would love to hear from you to keep improving the tool.</p>
+                    <p>You can communicate directly with the Project Director by sending an email to:</p>
+                    
+                    <div style="background-color: #e8f4f8; padding: 20px; border-radius: 10px; display: inline-block; margin-top: 20px; border: 2px dashed #3498db;">
+                        <strong style="font-size: 1.4em; color: #2c3e50;">contacto.interpolat@gmail.com</strong>
+                    </div>
+                    
+                    <p style="margin-top: 40px; color: #7f8c8d;">We try to respond to all messages within 24 to 48 business hours.</p>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const lang = urlParams.get('lang') || 'es';
+        
+        if (lang === 'en') {
+            document.getElementById('html-tag').setAttribute('lang', 'en');
+            document.getElementById('content-es').style.display = 'none';
+            document.getElementById('content-en').style.display = 'block';
+            document.getElementById('page-title').innerText = "Contact - Interpolat";
+            document.getElementById('main-heading').innerText = "Contact";
+            document.getElementById('back-link').innerText = "← Back to Calculator";
+            document.getElementById('back-link').href = "index.html?lang=en";
+        }
+    </script>
+</body>
+</html>
